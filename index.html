@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Entangled - Crochet Sandbox</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="image/svg+xml" href="./assets/fav_icon.svg">
+</head>
+
+<body>
+
+  <div class="splash" id="splash">
+    <div class="splash__spinner"></div>
+    <div class="splash__label">Casting on…</div>
+  </div>
+
+  <header class="header">
+    <div class="brand">
+      <img class="brand__logo" src="./assets/logo.svg" alt="Crochet Sandbox logo">
+      <h1 class="brand__title">Entangled</h1>
+      <span class="brand__tag">Crochet Sandbox</span>
+    </div>
+    <div class="controls">
+      <span class="controls__status">
+        <span class="controls__dot" id="status-dot"></span>
+        <span id="status-text">idle</span>
+      </span>
+      <button class="controls__button" id="download-btn" title="Download current SVG">Save SVG</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="pane">
+      <div class="pane__header">
+        <span class="pane__label"><span class="pane__marker"></span>Pattern</span>
+        <span class="pane__counter" id="char-count">0 chars</span>
+      </div>
+      <textarea class="editor" id="editor" spellcheck="false" autocomplete="off"
+        placeholder="Type CrochetPARADE instructions here…"></textarea>
+    </section>
+
+    <section class="pane">
+      <div class="pane__header">
+        <span class="pane__label"><span class="pane__marker"></span>Chart</span>
+        <span class="pane__counter" id="node-count">0 stitches</span>
+      </div>
+      <div class="canvas">
+        <div class="canvas__host" id="canvas-host"></div>
+        <div class="error" id="error-box"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- engine: lifted verbatim from CrochetPARADE -->
+  <script src="./simplify64.js"></script>
+  <script src="./parse64.js"></script>
+  <script src="./svg.min.js"></script>
+
+  <!-- entry point: parser-warning suppression, Module config, sandbox glue.
+       MUST load before graph64.js so the Module config exists when the
+       emscripten loader reads it. -->
+  <script src="./main.js"></script>
+
+  <script src="./graph64.js"></script>
+
+</body>
+
+</html>
