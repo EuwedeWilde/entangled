@@ -1,4 +1,4 @@
-# Crochet Sandbox
+# Entangled
 
 A live-preview editor for CrochetPARADE patterns. Type instructions on the
 left; see the standard crochet chart on the right, with real stitch symbols
